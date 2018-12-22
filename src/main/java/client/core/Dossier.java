@@ -17,18 +17,7 @@ public class Dossier {
 		root = new Category(ROOT_LABEL_NAME);
 		intialize();
 	}
-
-	public Dossier(Document einverstaendniserklaerung) {
-		root = new Category(ROOT_LABEL_NAME, einverstaendniserklaerung);
-		intialize();
-	}
-
-	public Dossier(String locator, Document einverstaendniserklaerung) {
-		root = new Category(ROOT_LABEL_NAME);
-		root.addDocument(locator, einverstaendniserklaerung);
-		intialize();
-	}
-
+	
 	private void intialize() {
 		Category geheimeDaten = new Category("Geheime Daten");
 		Category sensibleDaten = new Category("Sensible Daten");
@@ -47,10 +36,6 @@ public class Dossier {
 		return this.root;
 	}	
 
-	public Document getEinverstaendniserklaerung() {
-		return this.root.getData().values().iterator().next(); // FIXME: this should be verified in a productive environment
-	}
-	
 	public Category getCategory(String path) {
 		if(path.equals(ROOT_LABEL_NAME)) return this.getRoot();
 		if(path.startsWith(Dossier.ROOT_LABEL_NAME)) path = path.substring(path.indexOf(Dossier.ROOT_LABEL_NAME)+Dossier.ROOT_LABEL_NAME.length()+1);
