@@ -45,7 +45,7 @@ public interface KeyDeriveService {
 	public KeyPair deriveKeyPair(Key key);
 	
 	/**
-	 * Derive DirKey by path of a category. keyRoot and keyRootCategory must match each other a be part of the path.
+	 * Derive DirKey by path of a category. keyRoot and keyRootCategory must match each other and be part of the path.
 	 * @param keyRoot 
 	 * @param keyRootCategory
 	 * @param path

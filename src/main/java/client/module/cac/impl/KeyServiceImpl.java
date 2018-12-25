@@ -91,7 +91,7 @@ public class KeyServiceImpl implements KeyDeriveService, RootKeyService {
 			SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
 			// FIXME: use random seed
 			random.setSeed(1000L);
-			keyGen.initialize(2048, random); // The maximum length of a directory entry is keylenght / 8 - 11 bytes!
+			keyGen.initialize(2048, random); // The maximum length of a directory entry is keylength / 8 - 11 bytes!
 			return keyGen.generateKeyPair();
 		} catch (NoSuchAlgorithmException e) {
 			throw new RuntimeException(e);
@@ -104,7 +104,7 @@ public class KeyServiceImpl implements KeyDeriveService, RootKeyService {
 		if(!path.contains(keyRootCategory)) {
 			throw new IllegalStateException("target category "+path+" is not a child of root category "+keyRootCategory+"!");
 		}
-		// "string" way to get part of the path, FIXME make this propper and use category objects (dijkstra path)
+		// "string" way to get part of the path, FIXME make this proper and use category objects (dijkstra path)
 		String pathN = path.substring(path.indexOf(keyRootCategory));
 		return deriveKeyByPath(keyRoot, pathN);
 	}
